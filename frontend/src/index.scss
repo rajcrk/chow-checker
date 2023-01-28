@@ -1,0 +1,14 @@
+@use '@carbon/react';
+@use '@carbon/grid';
+@use '@carbon/type';
+// Include type reset
+@include type.reset();
+
+// Include default type styles, targets h1, h2, h3, etc
+@include type.default-type();
+
+// Include utility classes for type-related properties
+@include type.type-classes();
+
+// Emit the flex-grid styles
+@include grid.flex-grid();

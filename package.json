@@ -1,0 +1,34 @@
+{
+  "name": "chowchecker",
+  "version": "0.0.1",
+  "description": "Chow Checker's Production Platform",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm i --prefix frontend && npm i --prefix backend",
+    "dev": "concurrently \"npm run frontendDev\" \"npm run backendDev\"",
+    "frontendDev": "npm run start --prefix frontend",
+    "backendDev": "npm run start --prefix backend",
+    "docker-build": "docker build -t platform .",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Psystemsaskatoon/Psystem.git"
+  },
+  "keywords": [
+    "health and wellness",
+    "development"
+  ],
+  "author": "Raj Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajcrk"
+  },
+  "homepage": "https://github.com/rajcrk",
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  },
+  "dependencies": {
+    "react-ga": "^3.3.1"
+  }
+}
