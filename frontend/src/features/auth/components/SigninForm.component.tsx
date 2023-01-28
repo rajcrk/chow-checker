@@ -6,7 +6,9 @@ import {
     Button,
     PasswordInput,
     Link,
-    Loading
+    Loading,
+    Grid,
+    Column,
 } from '@carbon/react';
 import useInput from "../../../hooks/useInput";
 import { validateEmail } from "../../../shared/utils/validation/email";
@@ -38,7 +40,7 @@ const SigninFormComponent: FC = () => {
     }
 
     const dispatch = useAppDispatch();
-    const { isLoading, isSuccess, isAuthenticated } 
+    const { isLoading, isSuccess, isAuthenticated }
         = useAppSelector((state) => state.auth);
     const navigate = useNavigate();
 
@@ -66,8 +68,14 @@ const SigninFormComponent: FC = () => {
         dispatch(login(loginUser));
     };
 
-    if (isLoading) return <Loading
-        description="Active loading indicator" withOverlay={false} />
+    if (isLoading) return (
+        <Grid>
+            <Column lg={{ span: 4, offset: 6 }}>
+                <Loading
+                    description="Active loading indicator" withOverlay={false} />
+            </Column>
+        </Grid>
+    );
 
     return (
         <>

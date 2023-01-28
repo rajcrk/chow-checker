@@ -17,9 +17,15 @@ const searchFood = async (
             },
         });
 
-    const searchResponse: SearchResponse = {
+    console.log('The response from searching food -> ', response.data);
+    
+    let searchResponse: SearchResponse = {
         name: searchText,
         daysToExpire: +response.data.message,
+    }
+
+    if (!response.data.isSuccess) {
+        searchResponse.daysToExpire = -1;
     }
 
     return searchResponse;

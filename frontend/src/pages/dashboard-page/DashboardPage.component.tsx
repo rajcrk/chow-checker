@@ -1,7 +1,6 @@
 import './DashboardPage.style.scss';
 import FoodTableComponent from '../../features/food/components/FoodTable.component';
 import { Loading, Grid, Column } from '@carbon/react';
-import dashboardImg from './dashboard.png';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getFoodList } from '../../features/food/foodSlice';
@@ -46,7 +45,7 @@ const DashboardPage: React.FC = () => {
                 "value": 65000
             },],
         options: {
-            "title": "Pie (centered)",
+            "title": "What do you consume the most?",
             "resizable": true,
             "legend": {
                 "alignment": Alignments.CENTER,
@@ -65,22 +64,19 @@ const DashboardPage: React.FC = () => {
         <div className='dashboard-container'>
             <Grid className="cds--grid">
                 <Column lg={8} md={0} sm={0}>
-                    <img src={dashboardImg} alt="home" height="500" width="550" />
-                </Column>
-                <Column lg={8} md={8} sm={4}>
                     <FoodTableComponent
                         foodList={foodList}
                         dataTableHeader={dataTableHeader}
                     />
+
                 </Column>
-            </Grid>
-            <Grid>
-                <Column lg={8}>
+                <Column lg={8} md={8} sm={4}>
                     <PieChart
                         {...state}>
                     </PieChart>
                 </Column>
             </Grid>
+
         </div>
     );
 };

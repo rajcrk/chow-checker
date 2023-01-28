@@ -4,10 +4,10 @@
   "description": "Chow Checker's Production Platform",
   "main": "index.js",
   "scripts": {
-    "install-all": "npm i --prefix frontend && npm i --prefix backend",
+    "install-all": "npm i --prefix frontend && npm i --prefix api",
     "dev": "concurrently \"npm run frontendDev\" \"npm run backendDev\"",
     "frontendDev": "npm run start --prefix frontend",
-    "backendDev": "npm run start --prefix backend",
+    "backendDev": "npm run start --prefix api",
     "docker-build": "docker build -t platform .",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend"
   },

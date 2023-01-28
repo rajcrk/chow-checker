@@ -1,7 +1,20 @@
 .home-page-container {
-    margin-top: 10em;
+  padding-top: 10em;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    249deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(251, 251, 251, 1) 63%
+  );
+  height: 100vh;
 }
 
 .home-page-login-btn {
-    margin-top: 2em;
+  margin-top: 2em;
+}
+
+.home-page-content-container {
+    background-color: white;
+    border-radius: 6px;
+    padding: 2em;
 }

@@ -7,9 +7,9 @@ const LoginPage: React.FC = () => {
         <div className="registration-page-container">
             <div className="cds--grid">
                 <div className="cds--row">
-                    <div className="cds--offset-lg-5 cds--col-lg-6 center">
+                    <div className="cds--offset-lg-5 cds--col-lg-6 center login-container">
                         <div className='login-page-form-text'>
-                            <h3>Welcome back</h3>
+                            <h3>Welcome back 👋</h3>
                             <hr></hr>
                         </div>
                         <div className='login-page-form-container'>

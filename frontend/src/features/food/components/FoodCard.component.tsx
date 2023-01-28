@@ -32,14 +32,15 @@ const FoodCardComponent: FC<SearchResponse> = ({ name = '', daysToExpire = 0 }) 
         <>
             <Tile
                 id="clickable-tile-1">
-                <h4>{name} - {daysToExpire} Days </h4>
+                <h4 style={{ marginBottom: "2em", fontWeight: 600 }}>{name} 🌟</h4>
+                <p>You can use this for {daysToExpire} days</p>
                 <hr />
                 {
                     daysToExpire !== null 
                         && daysToExpire !== undefined 
                         && daysToExpire > 0 &&
                     <Button onClick={onFoodAddHandler}>
-                        Add Food to Your Fridge!
+                        Add {name} to Your Fridge!
                     </Button>
                 }
             </Tile>

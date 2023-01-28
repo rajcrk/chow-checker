@@ -1,17 +1,18 @@
-import { Loading, Grid, Column } from '@carbon/react';
+import { Grid, Column } from '@carbon/react';
 import RegistrationFormComponent from '../../features/auth/components/RegistrationForm.component';
 import './SignupPage.style.scss';
-import image from './Asset6.png';
 
 const SignupPage: React.FC = () => {
 
     return (
-        <div >
+        <div>
             <Grid className="sign-up-grid">
-                <Column lg={10} sm={0} md={0} style={{
-                    backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", objectFit: "cover",
-                    height: "100vh", width: "100%", marginLeft: 0
-                }}>
+                <Column lg={10} sm={0} md={0} className="sign-up-left-column">
+                    <div className='sign-up-left-column-inner'>
+                        <h2 className="heading">Digital platform for food validation.</h2>
+                        <hr></hr>
+                        <h2 className='sub-heading'>Register a new account now!</h2>
+                    </div>
                 </Column>
                 <Column lg={5} md={8} sm={4}>
                     <div className="login-page-container">
