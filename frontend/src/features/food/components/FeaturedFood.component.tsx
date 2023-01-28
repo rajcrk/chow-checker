@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { ClickableTile, Grid, Column, Button } from '@carbon/react';
-import "./FeaturedFood.style.scss";
+import { ClickableTile, Grid, Column } from '@carbon/react';
 
 const FeaturedFoodComponent: FC = () => {
 

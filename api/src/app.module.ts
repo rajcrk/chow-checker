@@ -10,7 +10,9 @@ import { FoodModule } from './food/food.module';
   imports: [
     FoodModule, 
     AuthModule,
-    MongooseModule.forRoot('mongodb://localhost/chowChecker')
+    MongooseModule.forRoot(
+      process.env.MONGO_DB_URL ? 
+        process.env.MONGO_DB_URL : "mongodb://localhost/chowChecker")
   ],
   controllers: [AppController],
   providers: [AppService],

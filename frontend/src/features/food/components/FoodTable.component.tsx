@@ -34,7 +34,7 @@ const FoodTableComponent:
                 headers={dataTableHeader}>
                 {({ rows, headers, getHeaderProps, getTableProps }:
                     { rows: Food[], headers: any, getHeaderProps: any, getTableProps: any }) => (
-                    <TableContainer title="Your Fridge Right Now">
+                    <TableContainer title="What's in your fridge right now!">
                         <Table {...getTableProps()}>
                             <TableHead>
                                 <TableRow key={"headerRowKey"}>

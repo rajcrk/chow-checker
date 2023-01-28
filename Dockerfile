@@ -15,12 +15,13 @@ COPY ./frontend/ /usr/src/app/frontend/
 # build frontend
 RUN npm run build --prefix frontend
 
-# install backend
-COPY ./backend/package*.json /usr/src/app/backend/
-RUN npm install --prefix backend
+# install api
+COPY ./api/package*.json /usr/src/app/api/
+RUN npm install --prefix api
 
 # copy backend files
-COPY ./backend/ /usr/src/app/backend/
+COPY ./api/ /usr/src/app/api/
+RUN npm run build --prefix api
 
 EXPOSE 5000
-CMD [ "node", "./backend/server.js" ]
+CMD [ "node", "dist/main.js" ]
