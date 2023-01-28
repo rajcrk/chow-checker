@@ -1,5 +1,3 @@
-# Psystem's Platform
-
 ## Running Frontend & Backend
 
 - `npm i`
