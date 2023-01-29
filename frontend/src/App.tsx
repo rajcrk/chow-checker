@@ -22,7 +22,7 @@ function App() {
     if (showAlert && alertMsg) {
       toast(alertMsg);
     }
-  }, [showAlert]);
+  }, [showAlert, alertMsg]);
 
   return (
     <div>
