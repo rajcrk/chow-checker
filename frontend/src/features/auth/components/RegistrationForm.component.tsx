@@ -18,6 +18,7 @@ import { NewUser } from "../models/NewUser";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux/hooks";
 import { useNavigate } from "react-router-dom";
 import { register, reset } from "../authSlice";
+import { toast } from "react-toastify";
 
 const RegistrationFormComponent: FC = () => {
 
@@ -74,7 +75,10 @@ const RegistrationFormComponent: FC = () => {
     const onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (password !== confirmPassword) return;
+        if (password !== confirmPassword) {
+            toast("There is a password mismatch!");
+            return;
+        }
 
         if (nameHasError || emailHasError
             || passwordHasError || confirmPasswordHasError) return;
@@ -106,7 +110,9 @@ const RegistrationFormComponent: FC = () => {
                         placeholder="Enter name"
                         name="name"
                         value={name}
+                        onBlur={nameBlurHandler}
                         onChange={nameChangeHandler}
+                        invalid={nameHasError}
                     />
                     <TextInput
                         value={email}
@@ -116,6 +122,8 @@ const RegistrationFormComponent: FC = () => {
                         labelText="Email"
                         placeholder="Enter email address"
                         name="email"
+                        onBlur={emailBlurHandler}
+                        invalid={emailHasError}
                         onChange={emailChangeHandler}
                     />
                     <PasswordInput
@@ -126,6 +134,8 @@ const RegistrationFormComponent: FC = () => {
                         labelText="Password"
                         placeholder="Enter password"
                         name="password"
+                        onBlur={passwordBlurHandler}
+                        invalid={passwordHasError}
                         onChange={passwordChangeHandler}
                     />
                     <PasswordInput
@@ -136,6 +146,8 @@ const RegistrationFormComponent: FC = () => {
                         labelText="Confirm Password"
                         placeholder="Enter password again"
                         name="confirmPassword"
+                        onBlur={confirmPasswordBlurHandler}
+                        invalid={confirmPasswordHasError}
                         onChange={confirmPasswordChangeHandler}
                     />
                     <Button

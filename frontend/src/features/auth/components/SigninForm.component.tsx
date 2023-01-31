@@ -89,6 +89,8 @@ const SigninFormComponent: FC = () => {
                         labelText="Email"
                         placeholder="Enter email address"
                         name="email"
+                        onBlur={emailBlurHandler}
+                        invalid={emailHasError}
                         onChange={emailChangeHandler}
                     />
                     <PasswordInput
@@ -99,6 +101,8 @@ const SigninFormComponent: FC = () => {
                         labelText="Password"
                         placeholder="Enter password"
                         name="password"
+                        onBlur={passwordBlurHandler}
+                        invalid={passwordHasError}
                         onChange={passwordChangeHandler}
                     />
                     <Button

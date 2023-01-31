@@ -17,12 +17,19 @@ import "@carbon/charts/styles.css";
 function App() {
 
   const { showAlert, alertMsg } = useAppSelector((state) => state.food);
+  const { showAuthAlert, alertAuthMsg } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     if (showAlert && alertMsg) {
       toast(alertMsg);
     }
   }, [showAlert, alertMsg]);
+
+  useEffect(() => {
+    if (showAuthAlert && alertAuthMsg) {
+      toast(alertAuthMsg);
+    }
+  }, [showAuthAlert, alertAuthMsg]);
 
   return (
     <div>

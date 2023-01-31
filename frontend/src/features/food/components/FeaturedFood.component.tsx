@@ -1,15 +1,41 @@
 import { FC } from "react";
 import { ClickableTile, Grid, Column } from '@carbon/react';
+import { addFood } from "../foodSlice";
+import { Food } from "../models/Food";
+import { useAppDispatch } from "../../../hooks/redux/hooks";
 
 const FeaturedFoodComponent: FC = () => {
 
+    const dispatch = useAppDispatch();
+
+    const onFoodAddHandler = (
+        { name, daysToExpire }: 
+        { name: string, daysToExpire: number }) => {
+        if (!name || !daysToExpire) return;
+
+        const dateAdded = new Date();
+        const expiryDate = _addDays(dateAdded, daysToExpire);
+
+        const foodList: Food[] = [
+            { name, dateAdded, expiryDate }
+        ]
+
+        dispatch(addFood(foodList));
+    }
+
+    const _addDays = (date: Date, days: number): Date => {
+        let result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
     const featuredFood = [
-        { name: "Chicken Curry", days: 3 },
-        { name: "Chicken Sandwitch", days: 3 },
-        { name: "Briyani", days: 4 },
-        { name: "Pork Sandwitch", days: 3 },
-        { name: "Food 3", days: 2 },
-        { name: "Food 6", days: 3 },
+        { name: "Chicken Curry", daysToExpire: 3 },
+        { name: "Chicken Sandwitch", daysToExpire: 3 },
+        { name: "Briyani", daysToExpire: 4 },
+        { name: "Pork Sandwitch", daysToExpire: 3 },
+        { name: "Food 3", daysToExpire: 2 },
+        { name: "Food 6", daysToExpire: 3 },
     ];
 
     return (
@@ -25,9 +51,9 @@ const FeaturedFoodComponent: FC = () => {
                         <Column lg={4} md={4} sm={4} key={i}
                             style={{ marginBottom: "2em" }}>
                             <ClickableTile
-                                href="#">
+                                onClick={() => onFoodAddHandler(food)}>
                                 <h4 style={{ paddingBottom: "3em" }}>{food.name}</h4>
-                                <p>You can use this for {food.days} days</p>
+                                <p>You can use this for {food.daysToExpire} days</p>
                             </ClickableTile>
                         </Column>
                     );

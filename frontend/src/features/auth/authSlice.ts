@@ -23,6 +23,8 @@ interface AuthState extends AsyncState {
     user?: DisplayUser | null;
     jwt?: Jwt;
     isAuthenticated?: boolean;
+    showAuthAlert: boolean;
+    alertAuthMsg: string | null;
 }
 
 export const register = createAsyncThunk(
@@ -70,6 +72,8 @@ const initialState: AuthState = {
     isLoading: false,
     isSuccess: false,
     isError: false,
+    showAuthAlert: false,
+    alertAuthMsg: null,
 }
 
 export const authSlice = createSlice({
@@ -86,20 +90,26 @@ export const authSlice = createSlice({
         builder
             .addCase(register.pending, (state) => {
                 state.isLoading = true;
+                state.showAuthAlert = false;
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
                 state.user = action.payload;
+                state.alertAuthMsg = 'Account created';
+                state.showAuthAlert = true;
             })
             .addCase(register.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.user = null;
+                state.alertAuthMsg = 'An error occured during registration';
+                state.showAuthAlert = true;
             })
             // Login
             .addCase(login.pending, (state) => {
                 state.isLoading = true;
+                state.showAuthAlert = false;
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
@@ -107,6 +117,8 @@ export const authSlice = createSlice({
                 state.jwt = action.payload.jwt;
                 state.isAuthenticated = true;
                 state.user = action.payload.user;
+                state.alertAuthMsg = 'Login successfull';
+                state.showAuthAlert = true;
             })
             .addCase(login.rejected, (state) => {
                 state.isLoading = false;
@@ -114,6 +126,8 @@ export const authSlice = createSlice({
                 state.user = null;
                 state.isAuthenticated = false;
                 state.user = null;
+                state.alertAuthMsg = 'An error occured while loggin in';
+                state.showAuthAlert = true;
             })
             // Logout
             .addCase(logout.fulfilled, (state) => {
