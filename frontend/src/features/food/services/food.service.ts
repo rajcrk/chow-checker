@@ -16,8 +16,6 @@ const searchFood = async (
                 Authorization: `Bearer ${jwt}`,
             },
         });
-
-    console.log('The response from searching food -> ', response.data);
     
     let searchResponse: SearchResponse = {
         name: searchText,
@@ -41,8 +39,13 @@ const getFoodList = async (email: string): Promise<Food[] | null> => {
             headers: {
                 Authorization: `Bearer ${jwt}`,
             },
-        }).then((response: any) =>
-            _modifyFoodListResponse(response.data[0].foods));
+        }).then((response: any) => {
+            if (response.data.length > 0) {
+                return _modifyFoodListResponse(response.data[0].foods);
+            } else {
+                return [];
+            }
+        });
     return response;
 }
 
@@ -75,11 +78,8 @@ const deleteFood = async (id: string): Promise<Food[] | null> => {
             headers: {
                 Authorization: `Bearer ${jwt}`,
             },
-        }).then((response: any) =>
+        }).then((response: any) => 
         _modifyFoodListResponse(response.data[0].foods));
-
-    console.log('respose after deleting ');
-    console.log(response);
 
     return response;
 }

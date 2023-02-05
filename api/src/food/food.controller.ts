@@ -62,6 +62,8 @@ export class FoodController {
     async getFoodListForEmail(@Param('email') email: string): Promise<any> {
         try {
             const response = await this.foodService.getFoodListForEmail(email);
+            console.log('response ===> ');
+            console.log(response);
             return response;
         } catch (error) {
             return ResponseUtility.generateErrorResponse(error);
