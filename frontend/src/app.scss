@@ -1,0 +1,23 @@
+#toast {
+    position: fixed;
+    right: 32px;
+    top: 32px;
+    z-index: 99999;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px 0;
+    min-width: 400px;
+    max-width: 450px;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.25, 1.35);
+}
+
+.carbon-link:hover {
+    cursor: pointer;
+}

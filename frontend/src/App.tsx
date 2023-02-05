@@ -7,23 +7,22 @@ import HomePage from './pages/home-page/HomePage.component';
 import LoginPage from './pages/login-page/LoginPage.component';
 import PrivateRoute from './features/auth/components/PrivateRoute';
 import Header from './components/header/Header';
-import { ToastContainer, toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useAppSelector } from './hooks/redux/hooks';
+import {
+  ToastNotification
+} from '@carbon/react';
 import AboutPageComponent from './pages/about-page/About.component';
 import "@carbon/styles/css/styles.css";
 import "@carbon/charts/styles.css";
+import { toast, ToastContainer } from 'react-toastify';
 
 function App() {
 
   const { showAlert, alertMsg } = useAppSelector((state) => state.food);
   const { showAuthAlert, alertAuthMsg } = useAppSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (showAlert && alertMsg) {
-      toast(alertMsg);
-    }
-  }, [showAlert, alertMsg]);
+
 
   useEffect(() => {
     if (showAuthAlert && alertAuthMsg) {
@@ -35,6 +34,16 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
+        {!!showAlert && (
+            <ToastNotification
+              className="toast"
+              role="status"
+              id="toast"
+              timeout={2000}
+              title={alertMsg}
+              subtitle=""
+            />
+        )}
         <ToastContainer />
         <Routes>
           <Route path='/' element={<HomePage />}></Route>

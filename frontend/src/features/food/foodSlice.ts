@@ -20,7 +20,8 @@ const initialState: FoodState = {
     dataTableHeader: [
         { header: 'Name', key: 'name' },
         { header: 'Made Date', key: 'dateAdded' },
-        { header: 'Good Until', key: 'expiryDate' }
+        { header: 'Good Until', key: 'expiryDate' },
+        { header: 'Action', key: 'action'},
     ],
     showAlert: false,
     alertMsg: null,

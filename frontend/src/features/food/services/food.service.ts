@@ -91,7 +91,8 @@ const _modifyFoodListResponse = async (foodList: any): Promise<Food[]> => {
                 name: food.name,
                 dateAdded: moment(food.dateAdded).format("MMM Do"),
                 expiryDate: moment(food.expiryDate).format("MMM Do"),
-                id: food._id
+                id: food._id,
+                action: food._id,
             }
         }));
 
